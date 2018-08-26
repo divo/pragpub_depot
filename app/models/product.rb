@@ -17,8 +17,7 @@ class Product < ApplicationRecord
       unless line_items.empty?
         errors.add(:base, 'Line items present')
         throw :abort
+      end
     end
-  
-  end
-  
+    
 end
