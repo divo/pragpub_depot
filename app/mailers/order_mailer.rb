@@ -6,7 +6,7 @@ class OrderMailer < ApplicationMailer
   #
   #   en.order_mailer.received.subject
   #
-  def received
+  def received(order)
     @order = order
 
     mail to: order.email, subject: 'Store order confirmation'
@@ -18,8 +18,8 @@ class OrderMailer < ApplicationMailer
   #   en.order_mailer.shipped.subject
   #
   def shipped
-    @greeting = "Hi"
+    @order = order
 
-    mail to: "to@example.org"
+    mail to: order.email, subject: 'Store order shipped!'
   end
 end
