@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    uesr = User.find_by(name: params[:name])
+    user = User.find_by(name: params[:name])
     if user.try(:authenticate, params[:password])
       session[:user_id] = user.id
       redirect_to admin_url
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     session[:user_id] = nil
     redirect_to store_index_url, notice: "Logged out"
   end
